@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+        const QUOTEBANK = [
+            {
+                "quote": "I'm the one that's got to die when it's time for me to die, so let me live my life the way I want to.",
+                "author": "Jimi Hendrix"
+            },
+            {
+                "quote": "Who are you to judge the life i live i know i'm not perfect and i don't live to be. but before you start pointing fingers make sure your hands are clean.",
+                "author": "Jimi Hendrix"
+            },
+            {
+                "quote": "How well I have learned that there is no fence to sit on between heaven and hell. There is a deep, wide gulf, a chasm, and in that chasm is no place for any man.",
+                "author": "Jonny Cash"
+            },{
+                "quote": "You build on failure. You use it as a stepping stone. Close the door on the past. You don't try to forget the mistakes, but you don't dwell on it. You don't let it have any of your energy, or any of your time, or any of your space.",
+                "author": "Jonny Cash"
+            },{
+                "quote": "Don't you mind people grinning in your face.",
+                "author": "Son House"
+            }
+        ];
+        window.onload = init;
+        function init() {
+            generateQuote();
+        }
+
+        function generateQuote() {
+            const quoteSize = QUOTEBANK.length;
+            const randomIndex = Math.floor(Math.random() * quoteSize);
+            let randomQuoteData = QUOTEBANK[randomIndex];
+            let twitterLink= "https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&text=";
+
+            //Add the Quote
+            let quoteInApiFormat = randomQuoteData.quote.replace(/ /g,"%20");
+            twitterLink += quoteInApiFormat;
+
+            //Add the Author
+            let authorInApiFormat = randomQuoteData.author.replace(/ /g,"%20");
+            twitterLink += authorInApiFormat;
+
+            document.getElementById("text").innerText = randomQuoteData.quote;
+            document.getElementById("author").innerText = randomQuoteData.author;
+        }
+    </script>
+    <style>
+        * { font-size: 2rem; }
+    </style>
+</head>
+<body>
+    <wrapper id="quote-box">
+        <div id="text"></div>
+        <div id="author"></div>
+        <button id="new-quote" onclick="generateQuote()">New Quote</button>
+        <a href="#" target="_blank" id="tweet-quote">Tweet Quote</a>
+    </wrapper>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js" charset="utf-8"></script>
+
+</body>
+</html>
