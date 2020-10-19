@@ -1,6 +1,14 @@
+<!-- https://www.youtube.com/watch?v=pbWHp63-V3c 49:20 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Required meta tags -->
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+   <!-- Bootstrap CSS -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <title>Random Quote Generator for great Musicians</title>
     <script>
         const QUOTEBANK = [
             {
@@ -31,32 +39,47 @@
             const quoteSize = QUOTEBANK.length;
             const randomIndex = Math.floor(Math.random() * quoteSize);
             let randomQuoteData = QUOTEBANK[randomIndex];
-            let twitterLink= "https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&text=";
+            let twitterLink= "https://twitter.com/intent/tweet?hashtags=quotes&amp;related=freecodecamp&amp;text=";
+
+
 
             //Add the Quote
             let quoteInApiFormat = randomQuoteData.quote.replace(/ /g,"%20");
             twitterLink += quoteInApiFormat;
 
+
             //Add the Author
             let authorInApiFormat = randomQuoteData.author.replace(/ /g,"%20");
-            twitterLink += authorInApiFormat;
+            twitterLink +=  " - " + authorInApiFormat;
 
+            document.getElementById("tweet-quote").href = twitterLink;
             document.getElementById("text").innerText = randomQuoteData.quote;
             document.getElementById("author").innerText = randomQuoteData.author;
         }
     </script>
-    <style>
-        * { font-size: 2rem; }
-    </style>
+
 </head>
 <body>
     <wrapper id="quote-box">
+        <div class="card">
+          <div class="card-header">
+            Featured
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Special title treatment</h5>
+            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+            <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+
+
         <div id="text"></div>
         <div id="author"></div>
-        <button id="new-quote" onclick="generateQuote()">New Quote</button>
-        <a href="#" target="_blank" id="tweet-quote">Tweet Quote</a>
+        <button id="new-quote" onclick="generateQuote()" class="btn btn-success">New Quote</button>
+        <a href="#" target="_blank" id="tweet-quote" class="btn btn-primary">Tweet Quote</a>
     </wrapper>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js" charset="utf-8"></script>
-
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </body>
 </html>
